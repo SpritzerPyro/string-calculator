@@ -3,5 +3,10 @@
   "version": "0.0.1",
   "main": "dist/index.js",
   "author": "pueri <pyro@outlook.at>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.9",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.1"
+  }
 }
