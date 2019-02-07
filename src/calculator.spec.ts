@@ -28,4 +28,8 @@ describe('Calculator', () => {
       'Negatives not allowed: -4,-5'
     );
   });
+
+  test('handles passed delimiters', () => {
+    expect(calculator.add('//;\n1;2')).toEqual(3);
+  });
 });

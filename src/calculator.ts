@@ -1,7 +1,10 @@
 export class Calculator {
   public add(data: string): number {
-    const numbers = data
-      .split(/(,|\n)/)
+    const [first, rest] = data.split(/\n/, 2);
+    const del = /^\/\//.test(first) ? new RegExp(first.substr(2)) : /(,|\n)/;
+    const array = /^\/\//.test(first) ? rest : data;
+    const numbers = array
+      .split(del)
       .map(x => Number(x))
       .filter(x => typeof x === 'number' && x <= 1000);
 
