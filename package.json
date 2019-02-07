@@ -1,0 +1,7 @@
+{
+  "name": "string-calculator",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "pueri <pyro@outlook.at>",
+  "license": "MIT"
+}
