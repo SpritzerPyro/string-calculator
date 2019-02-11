@@ -1,26 +1,12 @@
-import { escapeRegExp } from 'lodash';
+import { Delimiter } from './delimiter';
 
 export class Calculator {
-  public add(data: string): number {
-    const [first, rest] = data.split(/\n/, 2);
+  public add(payload: string): number {
+    const delimiter = new Delimiter(payload);
+    const data = delimiter.escapseString(payload);
 
-    let delimiter = /(,|\n)/;
-
-    if (/^\/\//.test(first)) {
-      delimiter = new RegExp(
-        /^\/\/\[.+\]$/.test(first)
-          ? first
-              .substring(3, first.length - 1)
-              .split('][')
-              .map(x => escapeRegExp(x))
-              .join('|')
-          : first.substr(2)
-      );
-    }
-
-    const array = /^\/\//.test(first) ? rest : data;
-    const numbers = array
-      .split(delimiter)
+    const numbers = data
+      .split(delimiter.regexp)
       .map(x => Number(x))
       .filter(x => typeof x === 'number' && x <= 1000);
 
