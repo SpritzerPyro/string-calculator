@@ -9,12 +9,20 @@ export class Delimiter {
     this.delimiter = delimiter;
   }
 
-  public get regexp(): RegExp {
-    return this._delimiter;
-  }
-
   public set delimiter(delimiter: string) {
     this._delimiter = this.getDelimiter(delimiter);
+  }
+
+  public escapseString(payload: string): string {
+    if (!this.customStarter.test(payload)) {
+      return payload;
+    }
+
+    return payload.split(/\n/, 2)[1] || '';
+  }
+
+  public get regexp(): RegExp {
+    return this._delimiter;
   }
 
   public split(text: string): string[] {
